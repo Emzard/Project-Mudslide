@@ -1,0 +1,59 @@
+.button-style {
+    width: 339px;
+    height: 128px;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-top: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-image: url("project://database/Assets/Images/Menu/Asset%2029-8.png?fileID=2800000&guid=ebad98fd1d74c974784bcac962701a28&type=3#Asset 29-8");
+}
+
+.button-style:hover {
+    width: 339px;
+    height: 128px;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-top: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    -unity-background-image-tint-color: rgb(2, 221, 156);
+}
+
+.icon-button-style {
+    width: 219px;
+    height: 216px;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.icon-button-style:hover {
+    width: 219px;
+    height: 216px;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgb(2, 221, 156);
+}

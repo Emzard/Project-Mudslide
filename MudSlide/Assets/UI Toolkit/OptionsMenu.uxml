@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/ButtonStyle.uss?fileID=7433441132597879392&amp;guid=28edb20c655d3154cacea842b9d0c78d&amp;type=3#ButtonStyle" />
+    <Style src="project://database/Assets/UI%20Toolkit/SliderStyle.uss?fileID=7433441132597879392&amp;guid=ea41621b03be6cf4e89842bc017ecf06&amp;type=3#SliderStyle" />
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&quot;project://database/Assets/UI_Assets/Menu/sound_menu.jpg?fileID=2800000&amp;guid=c39fbfcf2c05cc24aa10e57e9b1c3c88&amp;type=3#sound_menu&quot;); -unity-background-image-tint-color: rgb(255, 255, 255); justify-content: space-around; align-items: center;">
+        <ui:VisualElement style="flex-grow: 1; width: 900px; align-items: center; justify-content: space-around; background-color: rgba(0, 0, 0, 0.62);">
+            <ui:VisualElement style="flex-grow: 0; width: 553px; height: 256px; background-image: url(&quot;project://database/Assets/UI_Assets/Menu/Asset%201-8.png?fileID=2800000&amp;guid=477e033cac5fade498020f4dbbcae8cf&amp;type=3#Asset 1-8&quot;); justify-content: center;">
+                <ui:Label tabindex="-1" text="OPTIONS" parse-escape-sequences="true" display-tooltip-when-elided="true" style="justify-content: flex-start; color: rgb(255, 255, 255); -unity-font-style: bold; font-size: 55px; -unity-text-align: middle-center; -unity-font-definition: url(&quot;project://database/Assets/UI_Assets/Fonts/MontserratExtrabold-VGO60%20SDF.asset?fileID=11400000&amp;guid=83f1e2c8c39ec3040abd68e2e315b1ee&amp;type=2#MontserratExtrabold-VGO60 SDF&quot;); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+            </ui:VisualElement>
+            <ui:Slider high-value="100" name="MySlider" focusable="true" class="slider new unity-base-slider n bar" style="height: 287px; width: 918px;" />
+            <ui:Slider label="Slider" high-value="100" class="nii niii bar" style="height: 116px; width: 858px;" />
+            <ui:Slider label="Slider" high-value="100" name="MySlider" class="bar" style="height: 147px; width: 542px;" />
+            <ui:VisualElement style="flex-grow: 1;" />
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="back_button" class="icon-button-style" style="background-image: url(&quot;project://database/Assets/UI_Assets/Menu/Asset%2034-8.png?fileID=2800000&amp;guid=85ab5c6d12e2e14419000cd31d62fb98&amp;type=3#Asset 34-8&quot;); border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); width: 150px; height: 150px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
