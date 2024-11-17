@@ -7,13 +7,11 @@ using UnityEngine.UIElements;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] UIDocument mainMenuDocument;
+    [SerializeField] UIDocument optionsMenuDocument;
 
     private Button new_game_button;
     private Button options_button;
     private Button quit_button;
-
-    public GameObject mainMenuObject;
-    public GameObject optionsMenuObject;
 
     void Awake()
     {
@@ -35,10 +33,14 @@ public class MainMenu : MonoBehaviour
 
     private void ShowOptionsMenu()
     {
-        print("Options Menu print");
-        Debug.Log("Optionsss");
-        mainMenuObject.SetActive(false);
-        optionsMenuObject.SetActive(true);
+        //mainMenuDocument.rootVisualElement.style.display = DisplayStyle.None;
+        //optionsMenuDocument.rootVisualElement.style.display = DisplayStyle.Flex;
+
+        VisualElement main_screen = mainMenuDocument.rootVisualElement.Q<VisualElement>("main-menu-screen");
+        main_screen.style.display = DisplayStyle.None;
+
+        VisualElement options_screen = optionsMenuDocument.rootVisualElement.Q<VisualElement>("options-screen");
+        options_screen.style.display = DisplayStyle.Flex;
     }
 
     private void QuitGame()
