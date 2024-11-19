@@ -34,19 +34,12 @@ public class OptionsMenu : MonoBehaviour
         {
             VisualElement main_screen = previousMenuDocument.rootVisualElement.Q<VisualElement>("main-menu-screen");
             main_screen.style.display = DisplayStyle.Flex;
-            //previousMenuDocument.rootVisualElement.style.display = DisplayStyle.Flex;
-            //optionsMenuDocument.rootVisualElement.style.display = DisplayStyle.None;
         }
         
         if (sceneName == "EmptyGameScene")
         {
             VisualElement pause_screen = previousMenuDocument.rootVisualElement.Q<VisualElement>("pause-screen");
             pause_screen.style.display = DisplayStyle.Flex;
-            //optionsMenuDocument.rootVisualElement.style.display = DisplayStyle.None;
-            
-            
-            //VisualElement options_screen = optionsMenuDocument.rootVisualElement.Q<VisualElement>("options-screen");
-            //options_screen.style.display = DisplayStyle.None;
         }
 
         VisualElement options_screen = optionsMenuDocument.rootVisualElement.Q<VisualElement>("options-screen");
