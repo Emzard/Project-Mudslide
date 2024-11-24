@@ -506,7 +506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefabs:
-  - {fileID: 3691529404938945779, guid: 6bbdc666762366b4bab83b7597b2b947, type: 3}
+  - {fileID: 7630546307432874812, guid: 688228b9162c0e246a6e1cc1d9ac2f0c, type: 3}
   - {fileID: 7560663461896434663, guid: 0ed7edc8423edbc49899ea5bbbfabf84, type: 3}
   - {fileID: 3535805283234297771, guid: e786ab5d6e77c444c98a1616bbd8b4ba, type: 3}
   powerupPrefab:
