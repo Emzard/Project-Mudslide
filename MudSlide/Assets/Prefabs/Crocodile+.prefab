@@ -124,10 +124,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinnedMeshRenderer: {fileID: 3398455635858237055}
+  player: {fileID: 8936231833039329242, guid: 83b47ea8b4e789f4286a9a1ad81a4349, type: 3}
   Swimming: 0
   Bite: 1
   amplitude: 50
   frequency: 3
+  biteDistance: 15
 --- !u!114 &554236948356208519
 MonoBehaviour:
   m_ObjectHideFlags: 0
