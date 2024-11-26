@@ -71,6 +71,10 @@ public class PlayerController : MonoBehaviour
             playerAudio.PlayOneShot(gameOverSound, 0.2f);
             mainCameraAudio.Stop();
 
+            if (HealthManager.health > 0)
+            {
+                HealthManager.health -= 1;
+            }
             Debug.Log("Game Over!");
         }
     }
