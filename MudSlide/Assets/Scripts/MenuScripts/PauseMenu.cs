@@ -48,7 +48,7 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("EmptyGameScene");
+        Loader.Load(Loader.Scene.EmptyGameScene);
     }
 
     public void LoadSettingsScreen()
@@ -59,19 +59,11 @@ public class PauseMenu : MonoBehaviour
         options_screen.style.display = DisplayStyle.Flex;
     }
 
-    // remove the pause menu
-    public void Continue()
-    {
-        pauseMenuDocument.rootVisualElement.style.display = DisplayStyle.None;
-        //PausePanel.SetActive(false);
-        //PauseButton.SetActive(true);
-        Time.timeScale = 1;
-    }
-
     public void ResumeGame()
     {
         pause_screen = pauseMenuDocument.rootVisualElement.Q<VisualElement>("pause-screen");
         pause_screen.style.display = DisplayStyle.None;
+        //Time.timeScale = 1; //another way to run the timescale
     }
 
 }
