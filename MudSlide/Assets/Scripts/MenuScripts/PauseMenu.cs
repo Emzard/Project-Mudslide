@@ -37,7 +37,7 @@ public class PauseMenu : MonoBehaviour
     {
         pause_screen = pauseMenuDocument.rootVisualElement.Q<VisualElement>("pause-screen");
         pause_screen.style.display = DisplayStyle.Flex;
-        //Time.timeScale = 0; // why set timescale? this runs according to real time
+        Time.timeScale = 0; // why set timescale? this runs according to real time
         // there might be a better way to pause a game
     }
 
@@ -48,7 +48,8 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartGame()
     {
-        Loader.Load(Loader.Scene.EmptyGameScene);
+        Loader.Load(Loader.Scene.MainGame);
+        Time.timeScale = 1.0f;
     }
 
     public void LoadSettingsScreen()
@@ -63,7 +64,7 @@ public class PauseMenu : MonoBehaviour
     {
         pause_screen = pauseMenuDocument.rootVisualElement.Q<VisualElement>("pause-screen");
         pause_screen.style.display = DisplayStyle.None;
-        //Time.timeScale = 1; //another way to run the timescale
+        Time.timeScale = 1; //another way to run the timescale
     }
 
 }

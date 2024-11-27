@@ -45,11 +45,11 @@ public class GameOverScreen : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("Main Game");
+        SceneManager.LoadScene("PlayerSelectionScene");
     }
 
     public void LoadMainMenu()
     {
-        Debug.Log("Go to Main Menu Scene");
+        SceneManager.LoadScene("Menus");
     }
 }

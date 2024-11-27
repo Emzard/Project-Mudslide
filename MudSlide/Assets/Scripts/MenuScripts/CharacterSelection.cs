@@ -27,7 +27,8 @@ public class CharacterSelection : MonoBehaviour
 	public void StartGame()
 	{
 		PlayerPrefs.SetInt("selectedCharacter", selectedCharacter);
-		Loader.Load(Loader.Scene.EmptyGameScene);
-		//SceneManager.LoadScene("EmptyGameScene");
-	}
+		Loader.Load(Loader.Scene.MainGame);
+        Time.timeScale = 1.0f; // might need to be removed, temporary fix for freezing
+        //SceneManager.LoadScene("EmptyGameScene");
+    }
 }

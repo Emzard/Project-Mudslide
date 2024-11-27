@@ -36,7 +36,7 @@ public class OptionsMenu : MonoBehaviour
             main_screen.style.display = DisplayStyle.Flex;
         }
         
-        if (sceneName == "EmptyGameScene")
+        if (sceneName == "MainGame")
         {
             VisualElement pause_screen = previousMenuDocument.rootVisualElement.Q<VisualElement>("pause-screen");
             pause_screen.style.display = DisplayStyle.Flex;
