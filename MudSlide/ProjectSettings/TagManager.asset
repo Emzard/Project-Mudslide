@@ -9,6 +9,7 @@ TagManager:
   - Shield
   - Speed Boost
   - Obstacle
+  - heart
   layers:
   - Default
   - TransparentFX
