@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private new Rigidbody rigidbody;
     private bool isGrounded = true;
 
+    public TextMeshProUGUI Collectible;
     // Start is called before the first frame update
     void Start()
     {
@@ -87,6 +89,9 @@ public class PlayerController : MonoBehaviour
             collectibles++;
             Destroy(other.gameObject);
             Debug.Log("You have " + collectibles + " collectibles.");
+            
+            // update the collectibles number
+            Collectible.SetText(": " + collectibles);
 
             playerAudio.PlayOneShot(collectibleSound, 0.2f);
         }
