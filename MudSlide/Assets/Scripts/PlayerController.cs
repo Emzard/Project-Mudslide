@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float jumpForce = 5.0f;
+    Animator animator;
+    private float jumpForce = 4f;
     private float moveSpeed = 10.0f;
     public int collectibles = 0;
 
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
         playerAudio = GetComponent<AudioSource>();
         mainCameraAudio = GameObject.Find("Main Camera").GetComponent<AudioSource>();
@@ -49,10 +51,16 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
+            animator.SetBool("IsJumping", true);
+            rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
             playerAudio.PlayOneShot(jumpSound, 0.2f);
+        }
+
+        if(!Input.GetKeyDown(KeyCode.Space) && !isGrounded)
+        {
+            animator.SetBool("IsJumping", false);
         }
     }
 
@@ -62,6 +70,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            Debug.Log("Grounded");
         }
 
         // Prints game over when the player hits an obstacle
