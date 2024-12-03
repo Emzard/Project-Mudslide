@@ -10,13 +10,14 @@ public class RepeatBackground : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
-        repeatWidth = GetComponent<BoxCollider>().size.x / 2;
+        // repeatWidth = GetComponent<BoxCollider>().size.x / 2;
+        repeatWidth = GetComponent<MeshCollider>().bounds.size.z / 2;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.back * 30 * Time.deltaTime, Space.World);
+        transform.Translate(Vector3.back * 25 * Time.deltaTime, Space.World);
 
         if (transform.position.z < startPos.z - repeatWidth)
         {
