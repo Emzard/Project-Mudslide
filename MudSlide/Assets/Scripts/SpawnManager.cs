@@ -28,12 +28,12 @@ public class SpawnManager : MonoBehaviour
     {
         // Gets a random position to spawn each object
         obstaclePos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0.075f, 70);
-        collectiblePos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 1, 70);
+        collectiblePos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0.25f, 70);
         powerupPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 1, 70);
 
         // Decides which of the powerups to spawn
-        powerupIndex = Random.Range(0, 2);
-        obstacleIndex = Random.Range(0, 3);
+        powerupIndex = Random.Range(0, powerupPrefab.Length);
+        obstacleIndex = Random.Range(0, obstaclePrefabs.Length);
 
     }
 
