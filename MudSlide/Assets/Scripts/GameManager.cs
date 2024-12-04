@@ -2,25 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    bool isGameOVer = false;
+    public GameObject gameOverScreen;
+    public Text gameOverMessage;
+    bool isGameOver = false;
 
-    float restartDelay = 1.5f;
+    private PlayerController playerController;
+
+    private void Start()
+    {
+        playerController = GameObject.Find("Hero-01").GetComponent<PlayerController>();
+    }
 
     public void GameOver()
     {
-        if (isGameOVer == false)
+        if (isGameOver == false)
         {
-            isGameOVer = true;
-            Debug.Log("Game Over!");
-            Invoke("Restart", restartDelay);
+            isGameOver = true;
+            gameOverMessage.text = "You saved " + playerController.collectibles + " people!";
+            gameOverScreen.SetActive(true);
         }
     }
 
-    void Restart()
+    public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

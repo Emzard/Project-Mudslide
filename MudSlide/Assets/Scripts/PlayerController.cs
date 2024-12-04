@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerController : MonoBehaviour
     private int playerHealth = 3;
     public int collectibles = 0;
 
+    public Text peopleSaved;
+    public Text health;
     public AudioClip collectibleSound;
     public AudioClip collisionSound;
     public AudioClip jumpSound;
@@ -41,6 +44,14 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Jump();
+
+        if (transform.position.y < -5)
+        {
+            controller.enabled = false;
+            mainCameraAudio.Stop();
+            playerAudio.PlayOneShot(gameOverSound, 0.2f);
+            gameManager.GameOver();
+        }
     }
 
     private void Move()
@@ -83,8 +94,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle") && hasPowerup == false)
         {
             playerHealth--;
+            health.text = "Health: " + playerHealth;
             playerAudio.PlayOneShot(collisionSound, 0.2f);
-            Debug.Log("You have " + playerHealth + " lives left.");
 
             if (playerHealth <= 0)
             {
@@ -103,7 +114,7 @@ public class PlayerController : MonoBehaviour
         {
             collectibles++;
             Destroy(other.gameObject);
-            Debug.Log("You have " + collectibles + " collectibles.");
+            peopleSaved.text = "People: " + collectibles;
 
             playerAudio.PlayOneShot(collectibleSound, 0.2f);
         }

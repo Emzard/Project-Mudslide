@@ -17,7 +17,7 @@ public class RepeatBackground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.back * 25 * Time.deltaTime, Space.World);
+        transform.Translate(Vector3.back * 20 * Time.deltaTime, Space.World);
 
         if (transform.position.z < startPos.z - repeatWidth)
         {
