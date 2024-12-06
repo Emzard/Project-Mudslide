@@ -13,8 +13,8 @@ public class PlayerController : MonoBehaviour
     private int playerHealth = 3;
     public int collectibles = 0;
 
-    public Text peopleSaved;
-    public Text health;
+    //public Text peopleSaved;
+    //public Text health;
     public AudioClip collectibleSound;
     public AudioClip collisionSound;
     public AudioClip jumpSound;
@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         {
             playerHealth--;
             UpdatePlayerHealthUI();
-            health.text = "Health: " + playerHealth;
+            //health.text = "Health: " + playerHealth;
             playerAudio.PlayOneShot(collisionSound, 0.2f);
 
             if (playerHealth <= 0)
@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
         {
             collectibles++;
             Destroy(other.gameObject);
-            peopleSaved.text = "People: " + collectibles;
+            //peopleSaved.text = "People: " + collectibles;
 
             // update the collectibles number
             Collectible.SetText(" " + collectibles);
