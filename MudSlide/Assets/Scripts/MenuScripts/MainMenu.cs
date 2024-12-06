@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour
 
     private void PlayGame()
     {
-        SceneManager.LoadScene("PlayerSelectionScene");
+        SceneManager.LoadScene("PlayerSelection");
     }
 
     private void ShowOptionsMenu()

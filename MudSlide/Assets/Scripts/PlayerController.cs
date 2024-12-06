@@ -131,7 +131,6 @@ public class PlayerController : MonoBehaviour
         {
             hasPowerup = true;
             Destroy(other.gameObject);
-            Debug.Log("You got a speed boost!");
             playerAudio.PlayOneShot(powerupSound, 0.7f);
 
             Time.timeScale = 2f;
@@ -143,7 +142,6 @@ public class PlayerController : MonoBehaviour
         {
             hasPowerup = true;
             Destroy(other.gameObject);
-            Debug.Log("You got a shield!");
 
             playerAudio.PlayOneShot(powerupSound, 0.7f);
 
@@ -167,16 +165,12 @@ public class PlayerController : MonoBehaviour
 
     void UpdatePlayerHealthUI()
     {
-        //Debug.Log("Current health is: " + health);
         switch (playerHealth)
         {
             case 0: // Game Over
-                Debug.Log("do we come here? -000000");
                 heart1.SetActive(false);
                 heart2.SetActive(false);
                 heart3.SetActive(false);
-                //Time.timeScale = 0;
-                //GameOverScreen.SetActive(true);
                 break;
             case 1:
                 heart1.SetActive(true);
@@ -194,12 +188,9 @@ public class PlayerController : MonoBehaviour
                 heart3.SetActive(true);
                 break;
             default: // Game Over
-                Debug.Log("do we come here? DEFAULT");
                 heart1.SetActive(false);
                 heart2.SetActive(false);
                 heart3.SetActive(false);
-                //Time.timeScale = 0;
-                //GameOverScreen.SetActive(true);
                 break;
         }
     }

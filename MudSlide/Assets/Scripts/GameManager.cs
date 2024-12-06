@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
         if (isGameOver == false)
         {
             isGameOver = true;
+            Time.timeScale = 0;
             //gameOverMessage.text = "You saved " + playerController.collectibles + " people!";
             gameOverScreen.SetActive(true);
         }
