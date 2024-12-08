@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/StyleSheets/ButtonStyle.uss?fileID=7433441132597879392&amp;guid=53048d0d58749c74bba8cacd39f32339&amp;type=3#ButtonStyle" />
+    <ui:VisualElement name="main-menu-screen" style="flex-grow: 1; justify-content: center; align-items: center; background-image: url(&quot;project://database/Assets/UI_Assets/menus/main_meu.jpg?fileID=2800000&amp;guid=48695722fddf14348b5b7675dab08ebf&amp;type=3#main_meu&quot;);">
+        <ui:VisualElement name="MainMenuContainer" style="flex-grow: 0; width: 1000px; height: 950px; align-items: center; background-color: rgba(0, 0, 0, 0.64); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; justify-content: center;">
+            <ui:VisualElement name="Logo" style="flex-grow: 0; align-items: center; align-self: center; height: 323px; width: 819px; background-image: url(&quot;project://database/Assets/UI_Assets/menus/jungle_madness_logo.png?fileID=21300000&amp;guid=e4b87dd5af1681d4fbb030b0fd82a67b&amp;type=3#jungle_madness_logo&quot;); -unity-background-scale-mode: stretch-to-fill;" />
+            <ui:GroupBox name="ButtonContainer">
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="new_game_button" class="button_style" style="background-image: url(&quot;project://database/Assets/UI_Assets/menus/new_game_Sprite.png?fileID=2800000&amp;guid=7e2f3e3c3ac2b324795a07d3026bf093&amp;type=3#new_game_Sprite&quot;);" />
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="options_button" class="button_style" style="background-image: url(&quot;project://database/Assets/UI_Assets/menus/options_button.png?fileID=2800000&amp;guid=73a5adf46c9d043439c12044883ac776&amp;type=3#options_button&quot;);" />
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="quit_button" class="button_style" style="background-image: url(&quot;project://database/Assets/UI_Assets/menus/quit_button.png?fileID=2800000&amp;guid=1f6776348a933314b977b7fa1fa18db0&amp;type=3#quit_button&quot;);" />
+            </ui:GroupBox>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
