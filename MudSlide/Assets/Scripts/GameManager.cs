@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject gameOverScreen;
-    public Text gameOverMessage;
+    //public Text gameOverMessage;
     bool isGameOver = false;
 
     private PlayerController playerController;
@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour
         if (isGameOver == false)
         {
             isGameOver = true;
-            gameOverMessage.text = "You saved " + playerController.collectibles + " people!";
+            Time.timeScale = 0;
+            //gameOverMessage.text = "You saved " + playerController.collectibles + " people!";
             gameOverScreen.SetActive(true);
         }
     }

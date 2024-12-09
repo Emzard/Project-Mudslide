@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -12,8 +13,8 @@ public class PlayerController : MonoBehaviour
     private int playerHealth = 3;
     public int collectibles = 0;
 
-    public Text peopleSaved;
-    public Text health;
+    //public Text peopleSaved;
+    //public Text health;
     public AudioClip collectibleSound;
     public AudioClip collisionSound;
     public AudioClip jumpSound;
@@ -28,6 +29,8 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = true;
     private bool hasPowerup = false;
 
+    public TextMeshProUGUI Collectible;
+    public GameObject heart1, heart2, heart3;
     // Start is called before the first frame update
     void Start()
     {
@@ -94,7 +97,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle") && hasPowerup == false)
         {
             playerHealth--;
-            health.text = "Health: " + playerHealth;
+            UpdatePlayerHealthUI();
+            //health.text = "Health: " + playerHealth;
             playerAudio.PlayOneShot(collisionSound, 0.2f);
 
             if (playerHealth <= 0)
@@ -114,7 +118,10 @@ public class PlayerController : MonoBehaviour
         {
             collectibles++;
             Destroy(other.gameObject);
-            peopleSaved.text = "People: " + collectibles;
+            //peopleSaved.text = "People: " + collectibles;
+
+            // update the collectibles number
+            Collectible.SetText(" " + collectibles);
 
             playerAudio.PlayOneShot(collectibleSound, 0.2f);
         }
@@ -124,7 +131,6 @@ public class PlayerController : MonoBehaviour
         {
             hasPowerup = true;
             Destroy(other.gameObject);
-            Debug.Log("You got a speed boost!");
             playerAudio.PlayOneShot(powerupSound, 0.7f);
 
             Time.timeScale = 2f;
@@ -136,7 +142,6 @@ public class PlayerController : MonoBehaviour
         {
             hasPowerup = true;
             Destroy(other.gameObject);
-            Debug.Log("You got a shield!");
 
             playerAudio.PlayOneShot(powerupSound, 0.7f);
 
@@ -156,5 +161,37 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(20);
         hasPowerup = false;
+    }
+
+    void UpdatePlayerHealthUI()
+    {
+        switch (playerHealth)
+        {
+            case 0: // Game Over
+                heart1.SetActive(false);
+                heart2.SetActive(false);
+                heart3.SetActive(false);
+                break;
+            case 1:
+                heart1.SetActive(true);
+                heart2.SetActive(false);
+                heart3.SetActive(false);
+                break;
+            case 2:
+                heart1.SetActive(true);
+                heart2.SetActive(true);
+                heart3.SetActive(false);
+                break;
+            case 3:
+                heart1.SetActive(true);
+                heart2.SetActive(true);
+                heart3.SetActive(true);
+                break;
+            default: // Game Over
+                heart1.SetActive(false);
+                heart2.SetActive(false);
+                heart3.SetActive(false);
+                break;
+        }
     }
 }
