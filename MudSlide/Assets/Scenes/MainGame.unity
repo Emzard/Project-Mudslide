@@ -3382,6 +3382,7 @@ MonoBehaviour:
   collectiblePrefab:
   - {fileID: 5940856076283951881, guid: 7e0d44d1b9a2fde4f8b9e940c9360ba4, type: 3}
   - {fileID: 3347216701207912356, guid: d1d41fd4d693a424d940d3cfaa3122d4, type: 3}
+  - {fileID: 5192608215839704620, guid: 190689820b22b624eb9d4f614c4bdabc, type: 3}
 --- !u!4 &934645071 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1622644890356783674, guid: 7a53eb2a1b8f2f44995ae1afa756b4a2, type: 3}
