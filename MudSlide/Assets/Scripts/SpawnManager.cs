@@ -6,7 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject[] obstaclePrefabs;
     public GameObject[] powerupPrefab;
-    public GameObject collectiblePrefab;
+    public GameObject[] collectiblePrefab;
 
     private Vector3 obstaclePos;
     private Vector3 collectiblePos;
@@ -14,6 +14,7 @@ public class SpawnManager : MonoBehaviour
     private float spawnRangeX = 4.5f;
     private int powerupIndex;
     private int obstacleIndex;
+    private int collectibleIndex;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +35,7 @@ public class SpawnManager : MonoBehaviour
         // Decides which of the powerups to spawn
         powerupIndex = Random.Range(0, powerupPrefab.Length);
         obstacleIndex = Random.Range(0, obstaclePrefabs.Length);
+        collectibleIndex = Random.Range(0, collectiblePrefab.Length);
 
     }
 
@@ -44,7 +46,7 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnCollectible()
     {
-        Instantiate(collectiblePrefab, collectiblePos, collectiblePrefab.transform.rotation);
+        Instantiate(collectiblePrefab[collectibleIndex], collectiblePos, collectiblePrefab[collectibleIndex].transform.rotation);
     }
 
     void SpawnPowerup()
