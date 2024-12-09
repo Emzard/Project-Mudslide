@@ -13,8 +13,6 @@ public class PlayerController : MonoBehaviour
     private int playerHealth = 3;
     public int collectibles = 0;
 
-    //public Text peopleSaved;
-    //public Text health;
     public AudioClip collectibleSound;
     public AudioClip collisionSound;
     public AudioClip jumpSound;
@@ -31,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI Collectible;
     public GameObject heart1, heart2, heart3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,10 +59,6 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         float horizontal = Input.GetAxis("Horizontal");
-
-        /* Vector3 move = new Vector3(horizontal, 0, 0).normalized * moveSpeed * Time.deltaTime;
-        rigidbody.MovePosition(transform.position + transform.TransformDirection(move));
-        */
 
         transform.Translate(Vector3.right * horizontal * moveSpeed * Time.deltaTime);
     }
@@ -98,7 +93,6 @@ public class PlayerController : MonoBehaviour
         {
             playerHealth--;
             UpdatePlayerHealthUI();
-            //health.text = "Health: " + playerHealth;
             playerAudio.PlayOneShot(collisionSound, 0.2f);
 
             if (playerHealth <= 0)
@@ -118,7 +112,6 @@ public class PlayerController : MonoBehaviour
         {
             collectibles++;
             Destroy(other.gameObject);
-            //peopleSaved.text = "People: " + collectibles;
 
             // update the collectibles number
             Collectible.SetText(" " + collectibles);
