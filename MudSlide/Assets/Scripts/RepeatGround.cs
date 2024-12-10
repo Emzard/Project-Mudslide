@@ -10,7 +10,7 @@ public class RepeatGround : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
-        repeatWidth = GetComponent<BoxCollider>().size.z / 2;
+        repeatWidth = GetComponent<MeshCollider>().bounds.size.z / 2;
     }
 
     // Update is called once per frame

@@ -28,7 +28,7 @@ public class SpawnManager : MonoBehaviour
     void Update()
     {
         // Gets a random position to spawn each object
-        obstaclePos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), -0.025f, 100);
+        obstaclePos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), -0.03f, 100);
         collectiblePos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0.25f, 100);
         powerupPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 1, 100);
 

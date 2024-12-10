@@ -4,7 +4,7 @@ using UnityEngine;
 namespace MTE
 {
     /// <summary>
-    /// Create <see cref="Texture2DArray"/> according to a <see cref="TextureArraySettings"/>
+    /// Create<see cref="Texture2DArray"/> according to a<see cref="TextureArraySettings"/>
     /// and assign to renderer's material.
     /// 
     /// The material must use a compatible TextureArray shader.
@@ -22,7 +22,7 @@ namespace MTE
             {
                 throw new System.ArgumentNullException(nameof(settings));
             }
-            
+
 #if UNITY_EDITOR
             Debug.Log($"Creating TextureArray according to TextureArraySettings {settings.name}...");
 #endif
@@ -63,7 +63,7 @@ namespace MTE
                 default:
                     throw new System.ArgumentOutOfRangeException();
             }
-            
+
 #if UNITY_EDITOR
             Debug.Log("Finished creating TextureArray.");
 #endif
@@ -119,7 +119,7 @@ namespace MTE
                 default:
                     throw new System.ArgumentOutOfRangeException();
             }
-            
+
             DestroyImmediate(array0);
             DestroyImmediate(array1);
             array0 = array1 = null;
@@ -262,7 +262,7 @@ namespace MTE
 
             array = textureArray;
         }
-        
+
         private static void CreatePBRTextureArray(TextureArraySettings settings,
             out Texture2DArray albedoArray, out Texture2DArray roughNormalAOArray)
         {
@@ -321,7 +321,7 @@ namespace MTE
             Texture2D aoTexture, int textureSize)
         {
             Texture2D result = new Texture2D(textureSize, textureSize, TextureFormat.RGBA32, false, true);
-            var pixels = new Color[textureSize*textureSize];
+            var pixels = new Color[textureSize * textureSize];
             var roughnessPixels = roughnessTexture.GetPixels();
             var normalPixels = normalTexture.GetPixels();
             var aoPixels = aoTexture.GetPixels();
