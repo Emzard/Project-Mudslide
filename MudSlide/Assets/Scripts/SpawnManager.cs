@@ -11,7 +11,7 @@ public class SpawnManager : MonoBehaviour
     private Vector3 obstaclePos;
     private Vector3 collectiblePos;
     private Vector3 powerupPos;
-    private float spawnRangeX = 4.5f;
+    private float spawnRangeX = 3f;
     private int powerupIndex;
     private int obstacleIndex;
     private int collectibleIndex;
@@ -19,18 +19,18 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         // These spawn the different objects at different time intervals
-        InvokeRepeating("SpawnObstacle", 3.0f, 1.3f);
-        InvokeRepeating("SpawnCollectible", 5f, 1.8f);
-        InvokeRepeating("SpawnPowerup", 10f, 20f);
+        InvokeRepeating("SpawnObstacle", 2.0f, Random.Range(1.25f, 2.5f));
+        InvokeRepeating("SpawnCollectible", 5f, Random.Range(3f, 5f));
+        InvokeRepeating("SpawnPowerup", 20f, 30f);
     }
 
     // Update is called once per frame
     void Update()
     {
         // Gets a random position to spawn each object
-        obstaclePos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0.075f, 70);
-        collectiblePos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0.25f, 70);
-        powerupPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 1, 70);
+        obstaclePos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), -0.025f, 100);
+        collectiblePos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0.25f, 100);
+        powerupPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 1, 100);
 
         // Decides which of the powerups to spawn
         powerupIndex = Random.Range(0, powerupPrefab.Length);

@@ -11,7 +11,7 @@ public class RepeatBackground : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
-        repeatWidth = GetComponent<MeshCollider>().bounds.size.z;
+        repeatWidth = GetComponent<MeshCollider>().bounds.size.z / 2;
         // repeatWidth = GetComponent<MeshCollider>().bounds.size.z / repeatmagnitude;
     }
 

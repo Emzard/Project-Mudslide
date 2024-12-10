@@ -6,7 +6,6 @@ public class RepeatGround : MonoBehaviour
 {
     private Vector3 startPos;
     private float repeatWidth;
-    public float repeatmagnitude;
     // Start is called before the first frame update
     void Start()
     {
