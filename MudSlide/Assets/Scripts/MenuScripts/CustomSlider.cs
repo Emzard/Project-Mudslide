@@ -34,7 +34,7 @@ public class CustomSlider : MonoBehaviour
 
         VisualElement new_dragger = new VisualElement();
         elem.Add(new_dragger);
-        new_dragger.name = "new-drgger";
+        new_dragger.name = "new-dragger";
         new_dragger.AddToClassList("new-dragger");
 
         // disable the picking mode to pick up the dragger

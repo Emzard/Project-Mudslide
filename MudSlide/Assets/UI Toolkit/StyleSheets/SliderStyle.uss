@@ -1,63 +1,68 @@
-.new-dragger {
-}
-
 .bar-slider {
     align-self: flex-end;
     width: 500px;
     height: 100%;
     -unity-background-image-tint-color: rgb(255, 255, 255);
-    background-image: url("project://database/Assets/UI_Assets/menus/loading_thing.png?fileID=2800000&guid=f9b9dba0d331aa142afb96cb157c9037&type=3#loading_thing");
+    background-image: url("project://database/Assets/UI_Assets/menus/loading_thing.png?fileID=21300000&guid=f9b9dba0d331aa142afb96cb157c9037&type=3#loading_thing");
     background-color: rgba(0, 144, 154, 0.05);
 }
 
-#StoneSlider {
+.music-slider {
+}
+
+.sound-slider {
+}
+
+#VolumeSlider {
     width: 380px;
-    height: 51px;
-    background-image: url("project://database/Assets/UI_Assets/menus/container_slider_sprite.png?fileID=2800000&guid=a0cf96d60084ab44582d5607dfa88b08&type=3#container_slider_sprite");
+    height: 58px;
 }
 
-#StoneSlider Label {
+#VolumeSlider Label {
     display: none;
+    top: auto;
 }
 
-#StoneSlider #unity-tracker {
-    top: 0;
-    height: 100%;
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    -unity-background-image-tint-color: rgba(0, 221, 30, 0);
-    background-color: rgba(0, 13, 21, 0.64);
-    border-left-color: rgba(0, 0, 0, 0);
-    border-right-color: rgba(0, 0, 0, 0);
-    border-top-color: rgba(0, 0, 0, 0);
-    border-bottom-color: rgba(0, 0, 0, 0);
-}
-
-#StoneSlider #unity-dragger {
-    width: 41px;
-    height: 66px;
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    background-image: url("project://database/Assets/UI_Assets/menus/dragger-sprite.png?fileID=2800000&guid=39ae193c6604fc54fbac2579ec194a65&type=3#dragger-sprite");
-    background-color: rgba(0, 0, 0, 0);
-    border-left-color: rgba(32, 32, 32, 0);
-    border-right-color: rgba(32, 32, 32, 0);
-    border-top-color: rgba(32, 32, 32, 0);
-    border-bottom-color: rgba(32, 32, 32, 0);
-}
-
-#StoneSlider #unity-drag-container {
-    margin-top: 20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    margin-left: 15px;
-    background-color: rgba(2, 125, 100, 0);
+#VolumeSlider #unity-tracker {
+    background-color: rgba(0, 35, 47, 0.95);
+    border-left-color: rgb(168, 218, 255);
+    border-right-color: rgb(93, 134, 163);
+    border-top-color: rgb(45, 79, 103);
+    border-bottom-color: rgb(96, 140, 169);
+    height: 30px;
+    top: 30%;
+    border-top-width: 8px;
+    border-right-width: 8px;
+    border-bottom-width: 8px;
+    border-left-width: 8px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+}
+
+#VolumeSlider #unity-dragger {
+    background-image: url("project://database/Assets/UI_Assets/menus/dragger-sprite.png?fileID=21300000&guid=39ae193c6604fc54fbac2579ec194a65&type=3#dragger-sprite");
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    width: 30px;
+    height: 100%;
+    top: 20%;
+}
+
+#VolumeSlider #unity-drag-container {
+    justify-content: center;
+    align-items: flex-start;
+    background-image: none;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
 }
