@@ -63,21 +63,18 @@ public class VolumeSliders : MonoBehaviour
         var music_slider = options_screen.Q<Slider>(className: "music-slider");
         GetCurrentVolume(music_slider, "music-volume");
         SkinSlider(music_slider, musicAudio);
-        musicAudio.Play();
-        music_slider.value = 50;
 
         // get sound slider
         var sound_slider = options_screen.Q<Slider>(className: "sound-slider");
         GetCurrentVolume(sound_slider, "sound-volume");
-        //sound_slider.value = 50;
         SkinSlider(sound_slider, soundAudio);
 
     }
 
     void GetCurrentVolume(Slider s, string player_pref)
     {
-        if (PlayerPrefs.HasKey(player_pref)) { 
-            s.value = PlayerPrefs.GetFloat(player_pref);
+        if (PlayerPrefs.HasKey(player_pref)) {
+            s.value = PlayerPrefs.GetFloat(player_pref) * 100f;
         } else
         {
             s.value = 50;
@@ -89,9 +86,8 @@ public class VolumeSliders : MonoBehaviour
     {
         var tracker = s.Q(className: Slider.trackerUssClassName);
         var dragger = s.Q(className: Slider.draggerUssClassName);
-        s.value = 20;
 
-        Color color = new Color(0.05f, 1, 1, 1);
+        Color color = new(0.05f, 1, 1, 1);
 
         var highlightTracker = new VisualElement()
         {
@@ -107,12 +103,11 @@ public class VolumeSliders : MonoBehaviour
 
         s.RegisterValueChangedCallback((evt) =>
         {
-            Debug.Log("New value: " + evt.newValue);
             audio.volume = evt.newValue / 100f;
 
             if (s.ClassListContains("sound-slider"))
             {
-                audio.PlayOneShot(jumpSound, 0.4f);
+                audio.PlayOneShot(jumpSound, evt.newValue / 100f);
                 PlayerPrefs.SetFloat("sound-volume", evt.newValue / 100f);
             }
 
@@ -123,8 +118,9 @@ public class VolumeSliders : MonoBehaviour
 
             highlightTracker.style.width = dragger.transform.position.x;
             highlightTracker.style.height = tracker.layout.height;
+
+            PlayerPrefs.SetInt("volume-isupdated", 1);
         });
     }
-
 
 }

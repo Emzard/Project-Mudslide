@@ -14,7 +14,6 @@ public class GeneralVolume : MonoBehaviour
 
         // specify for main game scene
 
-
         if (PlayerPrefs.HasKey("music-volume"))
         {
             //set the volume
@@ -23,6 +22,11 @@ public class GeneralVolume : MonoBehaviour
         {
             mainCameraAudio.volume = 0.5f;
             PlayerPrefs.SetFloat("music-volume", 0.5f);
+        }
+
+        if (!PlayerPrefs.HasKey("sound-volume"))
+        {
+            PlayerPrefs.SetFloat("sound-volume", 0.5f);
         }
     }
 }

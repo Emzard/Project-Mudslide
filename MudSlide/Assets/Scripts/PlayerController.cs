@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private GameManager gameManager;
     private bool isGrounded = true;
     private bool hasPowerup = false;
+    private float soundVolume;
 
     public TextMeshProUGUI Collectible;
     public GameObject heart1, heart2, heart3;
@@ -40,11 +41,25 @@ public class PlayerController : MonoBehaviour
         mainCameraAudio = GameObject.Find("Main Camera").GetComponent<AudioSource>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         controller = GetComponent<PlayerController>();
+        GetVolume();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // check if player updated the volume settings
+        if (PlayerPrefs.HasKey("volume-isupdated"))
+        {
+            int isVolumeUpdated = PlayerPrefs.GetInt("volume-isupdated");
+            if (isVolumeUpdated == 1)
+            {
+                GetVolume();
+            } 
+        } else
+        {
+            PlayerPrefs.SetInt("volume-isupdated", 0);
+        }
+        
         Move();
         Jump();
 
@@ -52,7 +67,7 @@ public class PlayerController : MonoBehaviour
         {
             controller.enabled = false;
             mainCameraAudio.Stop();
-            playerAudio.PlayOneShot(gameOverSound, 0.2f);
+            playerAudio.PlayOneShot(gameOverSound, soundVolume);//0.2f);
             gameManager.GameOver();
         }
     }
@@ -76,7 +91,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsJumping", true);
             rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
-            playerAudio.PlayOneShot(jumpSound, 0.2f);
+            playerAudio.PlayOneShot(jumpSound, soundVolume);//0.2f);
         }
 
         if (!Input.GetKeyDown(KeyCode.Space) && !isGrounded)
@@ -99,13 +114,13 @@ public class PlayerController : MonoBehaviour
             playerHealth--;
             UpdatePlayerHealthUI();
             //health.text = "Health: " + playerHealth;
-            playerAudio.PlayOneShot(collisionSound, 0.2f);
+            playerAudio.PlayOneShot(collisionSound, soundVolume);//0.2f);
 
             if (playerHealth <= 0)
             {
                 controller.enabled = false;
                 mainCameraAudio.Stop();
-                playerAudio.PlayOneShot(gameOverSound, 0.2f);
+                playerAudio.PlayOneShot(gameOverSound, soundVolume);//0.2f);
                 gameManager.GameOver();
             }
         }
@@ -123,7 +138,7 @@ public class PlayerController : MonoBehaviour
             // update the collectibles number
             Collectible.SetText(" " + collectibles);
 
-            playerAudio.PlayOneShot(collectibleSound, 0.2f);
+            playerAudio.PlayOneShot(collectibleSound, soundVolume);//0.2f);
         }
 
         // Controls the game's timescale to similuate the effect of a speed boost
@@ -131,7 +146,7 @@ public class PlayerController : MonoBehaviour
         {
             hasPowerup = true;
             Destroy(other.gameObject);
-            playerAudio.PlayOneShot(powerupSound, 0.7f);
+            playerAudio.PlayOneShot(powerupSound, soundVolume);//0.7f);
 
             Time.timeScale = 2f;
             StartCoroutine(SpeedBoostCountdownRoutine());
@@ -143,7 +158,7 @@ public class PlayerController : MonoBehaviour
             hasPowerup = true;
             Destroy(other.gameObject);
 
-            playerAudio.PlayOneShot(powerupSound, 0.7f);
+            playerAudio.PlayOneShot(powerupSound, soundVolume);// 0.7f);
 
             StartCoroutine(ShieldCountdownRoutine());
         }
@@ -161,6 +176,31 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(20);
         hasPowerup = false;
+    }
+
+    void GetVolume()
+    {
+        if (PlayerPrefs.HasKey("music-volume"))
+        {
+            //set the volume
+            mainCameraAudio.volume = PlayerPrefs.GetFloat("music-volume");
+        }
+        else
+        {
+            mainCameraAudio.volume = 0.5f;
+            PlayerPrefs.SetFloat("music-volume", 0.5f);
+        }
+
+        if (PlayerPrefs.HasKey("sound-volume"))
+        {
+            //set the volume
+            soundVolume = PlayerPrefs.GetFloat("sound-volume");
+        }
+        else
+        {
+            soundVolume = 0.5f;
+            PlayerPrefs.SetFloat("sound-volume", 0.5f);
+        }
     }
 
     void UpdatePlayerHealthUI()
