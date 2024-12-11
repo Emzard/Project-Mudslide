@@ -17,42 +17,6 @@ public class VolumeSliders : MonoBehaviour
 
     public AudioClip jumpSound;
 
-    // Start is called before the first frame update
-
-    //private void Awake()
-    //{
-    //    options_screen = GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("options-screen");
-    //    musicAudio = GameObject.Find("Main Camera").GetComponent<AudioSource>();
-    //    soundAudio = GetComponent<AudioSource>();
-
-    //    // get music slider
-    //    var music_slider = options_screen.Q<Slider>(className: "music-slider");
-    //    GetCurrentVolume(music_slider, "music-volume");
-    //    onAwake(music_slider);
-    //}
-
-    //void onAwake(Slider s)
-    //{
-    //    var tracker = s.Q(className: Slider.trackerUssClassName);
-    //    var dragger = s.Q(className: Slider.draggerUssClassName);
-    //    s.value = 20;
-
-    //    Color color = new Color(0.05f, 1, 1, 1);
-
-    //    var highlightTracker = new VisualElement()
-    //    {
-    //        name = "sub-tracker"
-    //    };
-
-    //    tracker.Add(highlightTracker); //Adding it as a child means it will be drawn on top
-    //    highlightTracker.style.backgroundColor = color;
-
-
-    //    highlightTracker.style.width = dragger.transform.position.x;
-    //    highlightTracker.style.height = tracker.layout.height;
-
-    //}
-
     void Start()
     {
         options_screen = GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("options-screen");
@@ -97,7 +61,6 @@ public class VolumeSliders : MonoBehaviour
         tracker.Add(highlightTracker); //Adding it as a child means it will be drawn on top
         highlightTracker.style.backgroundColor = color;
 
-        
         highlightTracker.style.width = dragger.transform.position.x;
         highlightTracker.style.height = tracker.layout.height;
 
