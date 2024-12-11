@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/StyleSheets/ButtonStyle.uss?fileID=7433441132597879392&amp;guid=53048d0d58749c74bba8cacd39f32339&amp;type=3#ButtonStyle" />
+    <ui:VisualElement name="pause-screen" style="flex-grow: 1; align-items: center; background-color: rgba(0, 0, 0, 0.25); display: none;">
+        <ui:VisualElement name="overlay-content" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.69); width: 900px; align-items: center; justify-content: space-around;">
+            <ui:VisualElement name="title" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/UI_Assets/menus/leaf_title.png?fileID=21300000&amp;guid=4797b65704723524986ac3e9e5a527a9&amp;type=3#leaf_title&quot;); width: 599px; height: 267px; justify-content: center;">
+                <ui:Label tabindex="-1" text="PAUSED" parse-escape-sequences="true" display-tooltip-when-elided="true" name="paused_label" style="-unity-font-style: bold; font-size: 65px; -unity-text-align: middle-center; color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
+            <ui:GroupBox name="icon-buttons" style="flex-direction: row;">
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="home_button" class="icon-button-style" style="background-image: url(&quot;project://database/Assets/UI_Assets/menus/home_button.png?fileID=2800000&amp;guid=da0e28148447ee64783cd08654dc0901&amp;type=3#home_button&quot;);" />
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="restart_button" class="icon-button-style" style="background-image: url(&quot;project://database/Assets/UI_Assets/menus/restart_button.png?fileID=2800000&amp;guid=be0f10f599182aa4da34e24fd2fb0d11&amp;type=3#restart_button&quot;);" />
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="options_button" class="icon-button-style" style="background-image: url(&quot;project://database/Assets/UI_Assets/menus/settings_button.png?fileID=2800000&amp;guid=40a508f163da44944a160304fc457f52&amp;type=3#settings_button&quot;);" />
+            </ui:GroupBox>
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="resume_button" class="button_style" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

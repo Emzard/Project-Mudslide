@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    private float jumpForce = 5.0f;
+    Animator animator;
+    private float jumpForce = 4f;
     private float moveSpeed = 10.0f;
+    private int playerHealth = 3;
     public int collectibles = 0;
 
     public AudioClip collectibleSound;
@@ -17,14 +22,23 @@ public class PlayerController : MonoBehaviour
     private AudioSource playerAudio;
     private AudioSource mainCameraAudio;
     private new Rigidbody rigidbody;
+    private PlayerController controller;
+    private GameManager gameManager;
     private bool isGrounded = true;
+    private bool hasPowerup = false;
+
+    public TextMeshProUGUI Collectible;
+    public GameObject heart1, heart2, heart3;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
         playerAudio = GetComponent<AudioSource>();
         mainCameraAudio = GameObject.Find("Main Camera").GetComponent<AudioSource>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        controller = GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -32,15 +46,19 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Jump();
+
+        if (transform.position.y < -5)
+        {
+            controller.enabled = false;
+            mainCameraAudio.Stop();
+            playerAudio.PlayOneShot(gameOverSound, 0.2f);
+            gameManager.GameOver();
+        }
     }
 
     private void Move()
     {
         float horizontal = Input.GetAxis("Horizontal");
-
-        /* Vector3 move = new Vector3(horizontal, 0, 0).normalized * moveSpeed * Time.deltaTime;
-        rigidbody.MovePosition(transform.position + transform.TransformDirection(move));
-        */
 
         transform.Translate(Vector3.right * horizontal * moveSpeed * Time.deltaTime);
     }
@@ -49,10 +67,16 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
+            animator.SetBool("IsJumping", true);
+            rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
             playerAudio.PlayOneShot(jumpSound, 0.2f);
+        }
+
+        if (!Input.GetKeyDown(KeyCode.Space) && !isGrounded)
+        {
+            animator.SetBool("IsJumping", false);
         }
     }
 
@@ -64,14 +88,20 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
         }
 
-        // Prints game over when the player hits an obstacle
-        else if (collision.gameObject.CompareTag("Obstacle"))
+        // The game restarts when the player hits an obstacle
+        if (collision.gameObject.CompareTag("Obstacle") && hasPowerup == false)
         {
+            playerHealth--;
+            UpdatePlayerHealthUI();
             playerAudio.PlayOneShot(collisionSound, 0.2f);
-            playerAudio.PlayOneShot(gameOverSound, 0.2f);
-            mainCameraAudio.Stop();
 
-            Debug.Log("Game Over!");
+            if (playerHealth <= 0)
+            {
+                controller.enabled = false;
+                mainCameraAudio.Stop();
+                playerAudio.PlayOneShot(gameOverSound, 0.2f);
+                gameManager.GameOver();
+            }
         }
     }
 
@@ -82,33 +112,79 @@ public class PlayerController : MonoBehaviour
         {
             collectibles++;
             Destroy(other.gameObject);
-            Debug.Log("You have " + collectibles + " collectibles.");
+
+            // update the collectibles number
+            Collectible.SetText(" " + collectibles);
 
             playerAudio.PlayOneShot(collectibleSound, 0.2f);
         }
 
+        // Controls the game's timescale to similuate the effect of a speed boost
         if (other.CompareTag("Speed Boost"))
         {
+            hasPowerup = true;
             Destroy(other.gameObject);
-            Debug.Log("You got a speed boost!");
-
             playerAudio.PlayOneShot(powerupSound, 0.7f);
+
+            Time.timeScale = 2f;
+            StartCoroutine(SpeedBoostCountdownRoutine());
         }
 
+        // Lets the player collide with an obstacle once without taking damage
         if (other.CompareTag("Shield"))
         {
+            hasPowerup = true;
             Destroy(other.gameObject);
-            Debug.Log("You got a shield!");
 
             playerAudio.PlayOneShot(powerupSound, 0.7f);
+
+            StartCoroutine(ShieldCountdownRoutine());
         }
+
     }
 
-    /* private void OnCollisionExit(Collision collision)
+    IEnumerator SpeedBoostCountdownRoutine()
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        yield return new WaitForSeconds(20);
+        hasPowerup = false;
+        Time.timeScale = 1;
+    }
+
+    IEnumerator ShieldCountdownRoutine()
+    {
+        yield return new WaitForSeconds(20);
+        hasPowerup = false;
+    }
+
+    void UpdatePlayerHealthUI()
+    {
+        switch (playerHealth)
         {
-            isGrounded = false;
+            case 0: // Game Over
+                heart1.SetActive(false);
+                heart2.SetActive(false);
+                heart3.SetActive(false);
+                break;
+            case 1:
+                heart1.SetActive(true);
+                heart2.SetActive(false);
+                heart3.SetActive(false);
+                break;
+            case 2:
+                heart1.SetActive(true);
+                heart2.SetActive(true);
+                heart3.SetActive(false);
+                break;
+            case 3:
+                heart1.SetActive(true);
+                heart2.SetActive(true);
+                heart3.SetActive(true);
+                break;
+            default: // Game Over
+                heart1.SetActive(false);
+                heart2.SetActive(false);
+                heart3.SetActive(false);
+                break;
         }
-    } */
+    }
 }

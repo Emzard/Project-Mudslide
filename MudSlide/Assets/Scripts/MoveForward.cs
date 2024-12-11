@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveForward : MonoBehaviour
 {
-    private float speed = 25;
+    private float speed = 20;
 
     // Update is called once per frame
     void Update()
