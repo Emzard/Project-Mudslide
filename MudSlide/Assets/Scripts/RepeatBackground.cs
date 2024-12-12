@@ -6,13 +6,11 @@ public class RepeatBackground : MonoBehaviour
 {
     private Vector3 startPos;
     private float repeatWidth;
-    public float repeatmagnitude;
     // Start is called before the first frame update
     void Start()
     {
         startPos = transform.position;
-        repeatWidth = GetComponent<MeshCollider>().bounds.size.z / 2;
-        // repeatWidth = GetComponent<MeshCollider>().bounds.size.z / repeatmagnitude;
+        repeatWidth = GetComponent<MeshCollider>().bounds.size.z;
     }
 
     // Update is called once per frame
