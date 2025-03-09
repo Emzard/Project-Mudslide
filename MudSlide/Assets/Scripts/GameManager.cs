@@ -6,17 +6,13 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    
     public GameObject gameOverScreen;
     bool isGameOver = false;
 
-    public float currentGameSpeed = 1;
     private PlayerController playerController;
 
     private void Start()
     {
-        StartCoroutine(IncreaseGamespeed());
-
         playerController = GameObject.Find("Hero-01").GetComponent<PlayerController>();
     }
 
@@ -38,14 +34,5 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
-    }
-
-    IEnumerator IncreaseGamespeed()
-    {
-        while (true)
-        {
-            yield return new WaitForSecondsRealtime(12);
-            Time.timeScale += 0.1f;
-        }
     }
 }
