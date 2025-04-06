@@ -158,43 +158,24 @@ public class PlayerController : MonoBehaviour
             playerAudio.PlayOneShot(windSound, 0.3f);
             windTrail.Play();
 
-            Time.timeScale = 2f;
+            Time.timeScale *= 2f;
             StartCoroutine(SpeedBoostCountdownRoutine());
         }
-
-        // Lets the player collide with an obstacle once without taking damage
-        if (other.CompareTag("Shield"))
-        {
-            hasPowerup = true;
-            Destroy(other.gameObject);
-
-            playerAudio.PlayOneShot(powerupSound, 0.7f);
-
-            StartCoroutine(ShieldCountdownRoutine());
-        }
-
     }
 
     IEnumerator SpeedBoostCountdownRoutine()
     {
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSecondsRealtime(10);
         hasPowerup = false;
-        Time.timeScale = 1;
+        Time.timeScale /= 2;
+        windTrail.Stop();
     }
 
-    IEnumerator ShieldCountdownRoutine()
-    {
-        yield return new WaitForSeconds(20);
-        hasPowerup = false;
-        playerAudio.Stop();
-        windTrail.Stop();
-        Time.timeScale /= 2f;
-    }
 
     IEnumerator CollisionFlashRoutine()
     {
         heroMaterial.color = Color.red;
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.3f);
         heroMaterial.color = Color.white;
     }
 
