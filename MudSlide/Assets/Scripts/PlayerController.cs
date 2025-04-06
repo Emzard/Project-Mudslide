@@ -18,14 +18,22 @@ public class PlayerController : MonoBehaviour
     public AudioClip jumpSound;
     public AudioClip powerupSound;
     public AudioClip gameOverSound;
+    public AudioClip splashSound;
+    public AudioClip windSound;
+    public ParticleSystem windTrail;
+    public ParticleSystem waterSplash;
+    public ParticleSystem surfWake;
+    public Material heroMaterial;
 
     private AudioSource playerAudio;
     private AudioSource mainCameraAudio;
+    private Renderer playerRenderer;
     private new Rigidbody rigidbody;
     private PlayerController controller;
     private GameManager gameManager;
     private bool isGrounded = true;
     private bool hasPowerup = false;
+    private int boundary = 4;
 
     public TextMeshProUGUI Collectible;
     public GameObject heart1, heart2, heart3;
@@ -39,11 +47,13 @@ public class PlayerController : MonoBehaviour
         mainCameraAudio = GameObject.Find("Main Camera").GetComponent<AudioSource>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         controller = GetComponent<PlayerController>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         Move();
         Jump();
 
@@ -54,6 +64,19 @@ public class PlayerController : MonoBehaviour
             playerAudio.PlayOneShot(gameOverSound, 0.2f);
             gameManager.GameOver();
         }
+
+        Vector3 playerPos = transform.position;
+
+        if (playerPos.x > boundary)
+        {
+            playerPos.x = boundary;
+        }
+        else if (playerPos.x < -boundary)
+        {
+            playerPos.x = -boundary;
+        }
+
+        transform.position = playerPos;
     }
 
     private void Move()
@@ -71,13 +94,15 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsJumping", true);
             rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
-            playerAudio.PlayOneShot(jumpSound, 0.2f);
+            playerAudio.PlayOneShot(jumpSound, 0.1f);
+            surfWake.Stop();
         }
 
         if (!Input.GetKeyDown(KeyCode.Space) && !isGrounded)
         {
             animator.SetBool("IsJumping", false);
         }
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -86,14 +111,19 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            playerAudio.PlayOneShot(splashSound, 0.1f);
+            surfWake.Play();
+            waterSplash.Play();
         }
 
         // The game restarts when the player hits an obstacle
         if (collision.gameObject.CompareTag("Obstacle") && hasPowerup == false)
         {
+
+            StartCoroutine(CollisionFlashRoutine());
             playerHealth--;
             UpdatePlayerHealthUI();
-            playerAudio.PlayOneShot(collisionSound, 0.2f);
+            playerAudio.PlayOneShot(collisionSound, 0.5f);
 
             if (playerHealth <= 0)
             {
@@ -116,7 +146,7 @@ public class PlayerController : MonoBehaviour
             // update the collectibles number
             Collectible.SetText(" " + collectibles);
 
-            playerAudio.PlayOneShot(collectibleSound, 0.2f);
+            playerAudio.PlayOneShot(collectibleSound, 0.1f);
         }
 
         // Controls the game's timescale to similuate the effect of a speed boost
@@ -125,17 +155,47 @@ public class PlayerController : MonoBehaviour
             hasPowerup = true;
             Destroy(other.gameObject);
             playerAudio.PlayOneShot(powerupSound, 0.7f);
+            playerAudio.PlayOneShot(windSound, 0.3f);
+            windTrail.Play();
 
-            Time.timeScale *= 2;
+            Time.timeScale = 2f;
             StartCoroutine(SpeedBoostCountdownRoutine());
         }
+
+        // Lets the player collide with an obstacle once without taking damage
+        if (other.CompareTag("Shield"))
+        {
+            hasPowerup = true;
+            Destroy(other.gameObject);
+
+            playerAudio.PlayOneShot(powerupSound, 0.7f);
+
+            StartCoroutine(ShieldCountdownRoutine());
+        }
+
     }
 
     IEnumerator SpeedBoostCountdownRoutine()
     {
-        yield return new WaitForSecondsRealtime(10);
+        yield return new WaitForSeconds(20);
         hasPowerup = false;
+        Time.timeScale = 1;
+    }
+
+    IEnumerator ShieldCountdownRoutine()
+    {
+        yield return new WaitForSeconds(20);
+        hasPowerup = false;
+        playerAudio.Stop();
+        windTrail.Stop();
         Time.timeScale /= 2f;
+    }
+
+    IEnumerator CollisionFlashRoutine()
+    {
+        heroMaterial.color = Color.red;
+        yield return new WaitForSecondsRealtime(0.5f);
+        heroMaterial.color = Color.white;
     }
 
     void UpdatePlayerHealthUI()
