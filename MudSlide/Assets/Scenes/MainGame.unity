@@ -5179,7 +5179,7 @@ MonoBehaviour:
   - {fileID: 408818789707468942, guid: f05b215d6ed950c48adb99b4b0b4a5f2, type: 3}
   - {fileID: 5294432256066712537, guid: 9891ca2c294290844bf1a362016b5c17, type: 3}
   powerupPrefab:
-  - {fileID: 5114063668417105274, guid: b1104987769cffd42954cd2d84646640, type: 3}
+  - {fileID: 6190309092261780632, guid: fc9a77ae0895d414a9bf6120056f4e44, type: 3}
   - {fileID: 1763904780718948596, guid: e69c0c392a08ffb4799cbf39ec5a94bf, type: 3}
   collectiblePrefab:
   - {fileID: 5940856076283951881, guid: 7e0d44d1b9a2fde4f8b9e940c9360ba4, type: 3}

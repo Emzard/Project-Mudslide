@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 5c94282fbb08e3b4098564c63456dbfc
+guid: 932a8bbef2a3e7e459c98659a1707a5f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Lightning
-    second: {fileID: 2100000, guid: 8658925ec8fe25c438aa6de13d7bf22e, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

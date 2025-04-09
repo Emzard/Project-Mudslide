@@ -7,6 +7,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] obstaclePrefabs;
     public GameObject[] powerupPrefab;
     public GameObject[] collectiblePrefab;
+    public GameObject FXprefab;
 
     private Vector3 obstaclePos;
     private Vector3 collectiblePos;
@@ -51,6 +52,14 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnPowerup()
     {
-        Instantiate(powerupPrefab[powerupIndex], powerupPos, powerupPrefab[powerupIndex].transform.rotation);
+        GameObject powerup = Instantiate(powerupPrefab[powerupIndex], powerupPos, powerupPrefab[powerupIndex].transform.rotation);
+
+        if(powerup.CompareTag("Speed Boost"))
+        {
+            GameObject FX = Instantiate(FXprefab, powerup.transform.position, Quaternion.identity);
+            FX.transform.SetParent(powerup.transform); 
+        }
+        
+        
     }
 }
