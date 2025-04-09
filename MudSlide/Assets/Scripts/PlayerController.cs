@@ -26,9 +26,12 @@ public class PlayerController : MonoBehaviour
     private GameManager gameManager;
     private bool isGrounded = true;
     private bool hasPowerup = false;
+    private bool hasShield = false;
 
     public TextMeshProUGUI Collectible;
     public GameObject heart1, heart2, heart3;
+    public GameObject ForceField;
+    public GameObject destroyFX;
 
     // Start is called before the first frame update
     void Start()
@@ -88,21 +91,33 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
         }
 
-        // The game restarts when the player hits an obstacle
-        if (collision.gameObject.CompareTag("Obstacle") && hasPowerup == false)
+        if(collision.gameObject.CompareTag("Obstacle"))
         {
-            playerHealth--;
-            UpdatePlayerHealthUI();
-            playerAudio.PlayOneShot(collisionSound, 0.2f);
-
-            if (playerHealth <= 0)
+            if(hasShield)
             {
-                controller.enabled = false;
-                mainCameraAudio.Stop();
-                playerAudio.PlayOneShot(gameOverSound, 0.2f);
-                gameManager.GameOver();
+                Instantiate(destroyFX, collision.transform.position, Quaternion.identity);
+                
+                Destroy(collision.gameObject);
+            }
+            
+            else
+            
+            // The game restarts when the player hits an obstacle
+            {
+                playerHealth--;
+                UpdatePlayerHealthUI();
+                playerAudio.PlayOneShot(collisionSound, 0.2f);
+
+                if (playerHealth <= 0)
+                {
+                    controller.enabled = false;
+                    mainCameraAudio.Stop();
+                    playerAudio.PlayOneShot(gameOverSound, 0.2f);
+                    gameManager.GameOver();
+                }
             }
         }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -129,6 +144,17 @@ public class PlayerController : MonoBehaviour
             Time.timeScale *= 2;
             StartCoroutine(SpeedBoostCountdownRoutine());
         }
+
+        if (other.CompareTag("Shield"))
+        {
+            hasPowerup = true;
+            hasShield = true;
+            Destroy(other.gameObject);
+            playerAudio.PlayOneShot(powerupSound, 0.7f);
+
+            ForceField.SetActive(true);
+            StartCoroutine(ForceFieldCountDownRoutine());
+        }
     }
 
     IEnumerator SpeedBoostCountdownRoutine()
@@ -136,6 +162,13 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSecondsRealtime(10);
         hasPowerup = false;
         Time.timeScale /= 2f;
+    }
+
+    IEnumerator ForceFieldCountDownRoutine()
+    {
+        yield return new WaitForSeconds(10);
+        hasPowerup = false;
+        ForceField.SetActive(false);
     }
 
     void UpdatePlayerHealthUI()

@@ -3,7 +3,17 @@ guid: 60447a90d3dfcab49965607339d5447c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - collectibleSound: {instanceID: 0}
+  - collisionSound: {instanceID: 0}
+  - jumpSound: {instanceID: 0}
+  - powerupSound: {instanceID: 0}
+  - gameOverSound: {instanceID: 0}
+  - Collectible: {instanceID: 0}
+  - heart1: {instanceID: 0}
+  - heart2: {instanceID: 0}
+  - heart3: {instanceID: 0}
+  - ForceField: {fileID: 997985529329555300, guid: 1760292a7a871b940a3fea598ed6aa0e, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

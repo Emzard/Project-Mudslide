@@ -9,6 +9,8 @@ TagManager:
   - Shield
   - Speed Boost
   - Obstacle
+  - FxTemporaire
+  - ForceField
   layers:
   - Default
   - TransparentFX
