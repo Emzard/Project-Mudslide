@@ -21,7 +21,7 @@ public class SpawnManager : MonoBehaviour
         // These spawn the different objects at different time intervals
         InvokeRepeating("SpawnObstacle", 2.0f, Random.Range(1.25f, 2.5f));
         InvokeRepeating("SpawnCollectible", 5f, Random.Range(3f, 5f));
-        InvokeRepeating("SpawnPowerup", 30f, 45f);
+        InvokeRepeating("SpawnPowerup", 20f, 45f);
 
     }
 
