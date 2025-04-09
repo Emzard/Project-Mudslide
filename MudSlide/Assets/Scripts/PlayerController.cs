@@ -168,6 +168,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(10);
         hasPowerup = false;
+        hasShield = false;
         ForceField.SetActive(false);
     }
 
