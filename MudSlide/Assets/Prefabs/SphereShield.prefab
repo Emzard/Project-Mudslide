@@ -69,6 +69,10 @@ PrefabInstance:
       value: SphereShield
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c834f49671f2a1d41b92b6159cf1a1e0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c834f49671f2a1d41b92b6159cf1a1e0, type: 3}
       propertyPath: m_TagString
       value: ForceField
       objectReference: {fileID: 0}

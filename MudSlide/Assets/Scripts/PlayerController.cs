@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // The game restarts when the player hits an obstacle
-        if (collision.gameObject.CompareTag("Obstacle") && hasPowerup == false)
+        if (collision.gameObject.CompareTag("Obstacle"))
         {
             if(hasShield)
             {
