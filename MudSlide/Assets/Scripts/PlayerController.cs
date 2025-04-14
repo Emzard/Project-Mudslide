@@ -79,6 +79,11 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.position = playerPos;
+
+        if(hasShield)
+        {
+            ForceField.transform.position = transform.position + new Vector3(0, 1, 0);
+        }
     }
 
     private void Move()
@@ -178,6 +183,7 @@ public class PlayerController : MonoBehaviour
         {
             hasPowerup = true;
             hasShield = true;
+            Debug.Log("Shield should show");
             Destroy(other.gameObject);
             playerAudio.PlayOneShot(powerupSound, 0.7f);
 

@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Lightning
-    second: {fileID: 2100000, guid: 8658925ec8fe25c438aa6de13d7bf22e, type: 2}
+    second: {fileID: 2100000, guid: d9bd9d781db03fd4bab84c1c9e90a3ba, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
