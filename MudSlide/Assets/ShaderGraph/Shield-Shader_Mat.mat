@@ -38,13 +38,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _Distortion_Strength: 1
-    - _GlowPower: 1
+    - _GlowPower: 2
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Transparency: 0.2
     m_Colors:
     - _Color: {r: 0.47358477, g: 1, b: 0.9197125, a: 0}
-    - _ShieldColor: {r: 0.47450984, g: 1, b: 0.48277348, a: 0}
+    - _ShieldColor: {r: 0, g: 1, b: 0.56758165, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2015584211556358542
 MonoBehaviour:

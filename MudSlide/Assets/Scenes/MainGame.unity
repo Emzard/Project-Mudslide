@@ -12779,6 +12779,7 @@ MonoBehaviour:
   gameOverSound: {fileID: 8300000, guid: 1edabb1d19eff2e4b8bd49b519e16077, type: 3}
   splashSound: {fileID: 8300000, guid: fbbf0d684a22fea48a268c897c51d227, type: 3}
   windSound: {fileID: 8300000, guid: 474343c93bf0aef4db347fe9e68667f2, type: 3}
+  PoofFXSound: {fileID: 8300000, guid: f8ecc95316c74e843ae14a038aafb29b, type: 3}
   windTrail: {fileID: 873579548}
   waterSplash: {fileID: 1192741367}
   surfWake: {fileID: 456526491}

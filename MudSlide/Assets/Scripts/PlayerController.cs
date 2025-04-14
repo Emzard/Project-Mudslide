@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip gameOverSound;
     public AudioClip splashSound;
     public AudioClip windSound;
+    //public AudioClip ShieldFXSound;
+    public AudioClip PoofFXSound;
     public ParticleSystem windTrail;
     public ParticleSystem waterSplash;
     public ParticleSystem surfWake;
@@ -131,6 +133,7 @@ public class PlayerController : MonoBehaviour
                 Instantiate(destroyFX, collision.transform.position, Quaternion.identity);
                 
                 Destroy(collision.gameObject);
+                playerAudio.PlayOneShot(PoofFXSound, 1f);
             }
 
             else
@@ -183,7 +186,6 @@ public class PlayerController : MonoBehaviour
         {
             hasPowerup = true;
             hasShield = true;
-            Debug.Log("Shield should show");
             Destroy(other.gameObject);
             playerAudio.PlayOneShot(powerupSound, 0.7f);
 
